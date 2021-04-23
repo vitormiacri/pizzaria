@@ -1,0 +1,51 @@
+{
+  "pizzaria": {
+    "sabores": [
+      "Calabresa",
+      "Portuguesa",
+      "Atum",
+      "Baiana",
+      "Brócolis",
+      "Brócolis Queijo e Bacon",
+      "Frango Catupiry",
+      "Muçarela",
+      "Firenze",
+      "Marguerita",
+      "Milho",
+      "Napolitana",
+      "Palmito",
+      "Quatro Queijos",
+      "Americana",
+      "Bacon",
+      "Calábria",
+      "Canadense",
+      "Cinco Queijos",
+      "Escarola",
+      "Lombinho",
+      "Moda da Casa",
+      "Sicília",
+      "Toscana",
+      "Vegetariana"
+    ],
+    "tamanhos": [
+      "Pequena",
+      "Média",
+      "Grande",
+      "Gigante"
+    ],
+    "massas": [
+      "Tradicional",
+      "Crocante",
+      "Macia",
+      "Sem glúten"
+    ],
+    "oferta_dia": {
+      "pizza": {
+        "sabor": "Moda da Casa",
+        "massa": "Crocante",
+        "tamanho": "Média"
+      },
+      "pontos": 50
+    }
+  }
+}
