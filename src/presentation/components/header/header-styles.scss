@@ -1,0 +1,20 @@
+@import '../../styles/colors.scss';
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $black;
+  height: 100px;
+
+  img {
+    height: 100px;
+  }
+
+  h1 {
+    color: $white;
+    font-size: 3rem;
+    margin-left: 2rem;
+    letter-spacing: 0.3rem;
+  }
+}
