@@ -19,7 +19,7 @@ const Home: React.FC = () => {
         <p>Aqui você encontrará diversas opções de pizzas</p>
         <p>com os mais variados sabores, massas e tamanhos!</p>
         <p>
-          Faça seu pedido clicando na opção abaixo e receba sua pizza no
+          Faça seu pedido clicando no botão abaixo e receba sua pizza no
           conforto da sua casa! 😃
         </p>
         <Button text="FAZER PEDIDO" handleClick={handleClick} />
