@@ -1,5 +1,5 @@
 import { HttpStatusCode } from '@/data/protocols/http/http-client';
-import { HttpClientSpy } from '@/data/protocols/test/mock-http';
+import { HttpClientSpy } from '@/data/test/mock-http';
 import { mockRemotePizzaDataModel } from '@/data/test/mock-pizza-data';
 import { RemoteLoadPizzasData } from '@/data/usecases/load-pizzas-data/remote-load-pizzas-data';
 import { UnexpectedError } from '@/domain/errors/unexpected-error';
