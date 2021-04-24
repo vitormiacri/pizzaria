@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useHistory } from 'react-router';
 
-import Header from '@/presentation/components/header/header';
+import { Header, Button } from '@/presentation/components';
 import Styles from './home-styles.scss';
 
 const Home: React.FC = () => {
@@ -22,9 +22,7 @@ const Home: React.FC = () => {
           Faça seu pedido clicando na opção abaixo e receba sua pizza no
           conforto da sua casa! 😃
         </p>
-        <button type="button" data-testid="order-init" onClick={handleClick}>
-          FAZER PEDIDO
-        </button>
+        <Button text="FAZER PEDIDO" handleClick={handleClick} />
       </div>
     </div>
   );
