@@ -1,5 +1,6 @@
 import { HttpStatusCode } from '@/data/protocols/http/http-client';
 import { HttpClientSpy } from '@/data/protocols/test/mock-http';
+import { mockRemotePizzaDataModel } from '@/data/test/mock-pizza-data';
 import { RemoteLoadPizzasData } from '@/data/usecases/load-pizzas-data/remote-load-pizzas-data';
 import { UnexpectedError } from '@/domain/errors/unexpected-error';
 import faker from 'faker';
@@ -34,5 +35,16 @@ describe('RemoteLoadPizzasData', () => {
     };
     const promise = sut.loadData();
     await expect(promise).rejects.toThrow(new UnexpectedError());
+  });
+
+  test('Should return a PizzaData if HttpClient returns 200', async () => {
+    const { sut, httpClientSpy } = makeSut();
+    const pizzaDataMock = mockRemotePizzaDataModel();
+    httpClientSpy.response = {
+      statusCode: HttpStatusCode.ok,
+      body: pizzaDataMock,
+    };
+    const pizzasData = await sut.loadData();
+    expect(pizzasData).toEqual(pizzaDataMock);
   });
 });
