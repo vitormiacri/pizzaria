@@ -1,4 +1,5 @@
-import { HttpClient } from '@/data/protocols/http/http-client';
+import { HttpClient, HttpStatusCode } from '@/data/protocols/http/http-client';
+import { UnexpectedError } from '@/domain/errors/unexpected-error';
 import { LoadPizzaData } from '@/domain/usecases/load-pizzas-data';
 
 export class RemoteLoadPizzasData implements LoadPizzaData {
@@ -12,19 +13,13 @@ export class RemoteLoadPizzasData implements LoadPizzaData {
       url: this.url,
       method: 'get',
     });
-    return Promise.resolve({
-      sabores: [],
-      tamanhos: [],
-      massas: [],
-      ofertaDia: {
-        pizza: {
-          sabor: '',
-          massa: '',
-          tamanho: '',
-        },
-        pontos: 0,
-      },
-    });
+    const remotePizzas = response.body;
+    switch (response.statusCode) {
+      case HttpStatusCode.ok:
+        return remotePizzas;
+      default:
+        throw new UnexpectedError();
+    }
   }
 }
 
