@@ -13,6 +13,7 @@
     "server": "json-server --watch db.json"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/faker": "^5.5.3",
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.41",
@@ -46,6 +47,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }
