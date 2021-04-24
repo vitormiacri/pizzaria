@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useHistory } from 'react-router';
 
 import Header from '@/presentation/components/header/header';
 import Styles from './home-styles.scss';
 
 const Home: React.FC = () => {
+  const history = useHistory();
+
+  const handleClick = useCallback(() => {
+    history.push('/order');
+  }, []);
+
   return (
     <div className={Styles.home}>
       <Header />
@@ -15,7 +22,9 @@ const Home: React.FC = () => {
           Faça seu pedido clicando na opção abaixo e receba sua pizza no
           conforto da sua casa! 😃
         </p>
-        <button type="button">INICIAR PEDIDO</button>
+        <button type="button" data-testid="order-init" onClick={handleClick}>
+          FAZER PEDIDO
+        </button>
       </div>
     </div>
   );
