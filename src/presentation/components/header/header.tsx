@@ -2,9 +2,7 @@ import React, { memo } from 'react';
 import Logo from '../logo/logo';
 import Styles from './header-styles.scss';
 
-type Props = React.HTMLAttributes<HTMLElement>;
-
-const Header: React.FC<Props> = ({ className, ...rest }) => {
+const Header: React.FC = () => {
   return (
     <header className={Styles.header}>
       <Logo />
