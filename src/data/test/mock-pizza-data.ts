@@ -1,7 +1,7 @@
 import faker from 'faker';
-import { RemoteLoadPizzasData } from '../usecases/load-pizzas-data/remote-load-pizzas-data';
+import { RemoteLoadPizzasDataModel } from '../usecases/load-pizzas-data/remote-load-pizzas-data';
 
-export const mockRemotePizzaDataModel = (): RemoteLoadPizzasData.Model => ({
+export const mockRemotePizzaDataModel = (): RemoteLoadPizzasDataModel => ({
   sabores: [faker.random.word(), faker.random.word(), faker.random.word()],
   tamanhos: [faker.random.word(), faker.random.word(), faker.random.word()],
   massas: [faker.random.word(), faker.random.word(), faker.random.word()],

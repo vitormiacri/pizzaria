@@ -5,10 +5,10 @@ import { LoadPizzaData } from '@/domain/usecases/load-pizzas-data';
 export class RemoteLoadPizzasData implements LoadPizzaData {
   constructor(
     private readonly url: string,
-    private readonly httpClient: HttpClient<RemoteLoadPizzasData.Model>
+    private readonly httpClient: HttpClient<RemoteLoadPizzasDataModel>
   ) {}
 
-  async loadData(): Promise<RemoteLoadPizzasData.Model> {
+  async loadData(): Promise<RemoteLoadPizzasDataModel> {
     const response = await this.httpClient.request({
       url: this.url,
       method: 'get',
@@ -23,18 +23,16 @@ export class RemoteLoadPizzasData implements LoadPizzaData {
   }
 }
 
-export namespace RemoteLoadPizzasData {
-  export type Model = {
-    sabores: string[];
-    tamanhos: string[];
-    massas: string[];
-    ofertaDia: {
-      pizza: {
-        sabor: string;
-        massa: string;
-        tamanho: string;
-      };
-      pontos: number;
+export type RemoteLoadPizzasDataModel = {
+  sabores: string[];
+  tamanhos: string[];
+  massas: string[];
+  ofertaDia: {
+    pizza: {
+      sabor: string;
+      massa: string;
+      tamanho: string;
     };
+    pontos: number;
   };
-}
+};

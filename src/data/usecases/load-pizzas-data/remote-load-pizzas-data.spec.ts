@@ -1,13 +1,16 @@
 import { HttpStatusCode } from '@/data/protocols/http/http-client';
 import { HttpClientSpy } from '@/data/test/mock-http';
 import { mockRemotePizzaDataModel } from '@/data/test/mock-pizza-data';
-import { RemoteLoadPizzasData } from '@/data/usecases/load-pizzas-data/remote-load-pizzas-data';
+import {
+  RemoteLoadPizzasData,
+  RemoteLoadPizzasDataModel,
+} from '@/data/usecases/load-pizzas-data/remote-load-pizzas-data';
 import { UnexpectedError } from '@/domain/errors/unexpected-error';
 import faker from 'faker';
 
 type SutTypes = {
   sut: RemoteLoadPizzasData;
-  httpClientSpy: HttpClientSpy<RemoteLoadPizzasData.Model>;
+  httpClientSpy: HttpClientSpy<RemoteLoadPizzasDataModel>;
 };
 
 const makeSut = (url = faker.internet.url()): SutTypes => {
