@@ -23,6 +23,7 @@ const makeSut = () => {
       },
       step: 1,
       setStep: jest.fn(),
+      setOffer: jest.fn(),
       setOrderItem: (item: string, value: string) => jest.fn(),
     },
   });

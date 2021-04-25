@@ -20,6 +20,7 @@ type SutTypes = {
 const makeSut = (step = 1): SutTypes => {
   const setStep = jest.fn();
   const setOrderItem = jest.fn();
+  const setOffer = jest.fn();
   const sut = renderWithHistory({
     Page: () => Order({ children: <Order /> }),
     history,
@@ -34,6 +35,7 @@ const makeSut = (step = 1): SutTypes => {
         ...db.pizzaria,
       },
       step,
+      setOffer,
       setStep,
       setOrderItem,
     },

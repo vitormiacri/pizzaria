@@ -17,6 +17,7 @@ type Params = {
     pizzaria: LoadPizzaDataModel;
     step: number;
     order: OrderModel;
+    setOffer(offer: OrderModel): void;
     setStep(newStep: number): void;
     setOrderItem(item: string, value: string): void;
   };

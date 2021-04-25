@@ -9,6 +9,7 @@ type PizzaContextData = {
   pizzaria: LoadPizzaDataModel;
   step: number;
   order: OrderModel;
+  setOffer(offer: OrderModel): void;
   getPizzaData(): void;
   setStep(newStep: number): void;
   setOrderItem(item: string, value: string): void;
@@ -35,6 +36,15 @@ export const PizzaProvider: React.FC<PizzaProvider> = ({
     oferta: 'nao',
   });
 
+  const setOffer = useCallback(
+    (order: OrderModel) => {
+      setOrder({
+        ...order,
+      });
+    },
+    [order]
+  );
+
   const setNewOrderItem = useCallback(
     (item: string, value: string) => {
       setOrder({
@@ -58,6 +68,7 @@ export const PizzaProvider: React.FC<PizzaProvider> = ({
         pizzaria: pizza,
         step,
         order,
+        setOffer,
         setStep: (newStep) => setStep(newStep),
         setOrderItem: (item, value) => setNewOrderItem(item, value),
         getPizzaData,
