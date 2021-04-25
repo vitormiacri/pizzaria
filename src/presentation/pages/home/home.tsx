@@ -20,10 +20,6 @@ const Home: React.FC = () => {
 
   useEffect(() => context.getPizzaData(), []);
 
-  useEffect(() => {
-    console.log(context.pizzaria);
-  }, [context.pizzaria]);
-
   return (
     <div className={Styles.home}>
       <Header />
@@ -35,6 +31,7 @@ const Home: React.FC = () => {
             <p>A oferta do dia é a Moda da Casa!</p>
             <Button
               text="QUERO A OFERTA"
+              data-testid="checkout-button"
               handleClick={handleClickOffer}
             ></Button>
           </div>
@@ -43,7 +40,7 @@ const Home: React.FC = () => {
           <p>Ou se preferir </p>
           <Button
             text="MONTE A SUA"
-            data-testid="order-init"
+            data-testid="order-button"
             handleClick={handleClickOrder}
           ></Button>
         </div>
