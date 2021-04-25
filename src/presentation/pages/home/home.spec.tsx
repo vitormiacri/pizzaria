@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
-import { render, cleanup, fireEvent, waitFor } from '@testing-library/react';
+import React from 'react';
+import { cleanup, fireEvent, waitFor } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { renderWithHistory } from '@/presentation/test/render-help';
 import Home from './home';
+import db from '../../../../db.json';
 
 const history = createMemoryHistory({ initialEntries: ['/home'] });
 
@@ -10,6 +11,20 @@ const makeSut = () => {
   const sut = renderWithHistory({
     Page: () => Home({ children: <Home /> }),
     history,
+    initialState: {
+      getOrder: () => ({
+        massa: '',
+        sabor: '',
+        tamanho: '',
+        oferta: '',
+      }),
+      pizzaria: {
+        ...db.pizzaria,
+      },
+      step: 1,
+      setStep: jest.fn(),
+      setOrderItem: (item: string, value: string) => jest.fn(),
+    },
   });
   return sut;
 };
@@ -22,7 +37,7 @@ describe('Home Component', () => {
     const button = sut.getByTestId('order-button');
     waitFor(() => fireEvent.click(button));
     expect(history.length).toBe(2);
-    expect(history.location.pathname).toBe('/order');
+    expect(history.location.pathname).toBe('/order/step1');
   });
 
   test('Should go to Checkout page', () => {

@@ -44,19 +44,19 @@ describe('Order Page', () => {
     expect(button[3].textContent).toEqual('Sem glúten');
   });
 
-  test('Should go to Order page step 2 after button clicked', () => {
-    const sut = makeSut();
-    const button = sut.getByTestId('back-button');
-    waitFor(() => fireEvent.click(button));
-    expect(history.length).toBe(1);
-    expect(history.location.pathname).toBe('/order');
-  });
-
   test('Should return to Home page if back button clicked', () => {
     const sut = makeSut();
     const button = sut.getByTestId('back-button');
     waitFor(() => fireEvent.click(button));
     expect(history.length).toBe(1);
-    expect(history.location.pathname).toBe('/order');
+    expect(history.location.pathname).toBe('/home');
+  });
+
+  test('Should go to Order page step 2 after button clicked', () => {
+    const sut = makeSut();
+    const button = sut.getAllByTestId('massa');
+    waitFor(() => fireEvent.click(button[0]));
+    expect(history.length).toBe(2);
+    expect(history.location.pathname).toBe('/order/step2');
   });
 });

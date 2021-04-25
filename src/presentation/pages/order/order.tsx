@@ -11,6 +11,11 @@ const Order: React.FC = () => {
 
   const handleClick = useCallback(() => {
     setStep(2);
+    history.push('/order/step2');
+  }, []);
+
+  const handleBack = useCallback(() => {
+    history.replace('/home');
   }, []);
 
   useEffect(() => {
@@ -39,8 +44,8 @@ const Order: React.FC = () => {
         <Button
           text="Voltar"
           data-testid="back-button"
-          handleClick={() => history.goBack()}
-        ></Button>
+          handleClick={handleBack}
+        />
       </div>
     </MainContainer>
   );
