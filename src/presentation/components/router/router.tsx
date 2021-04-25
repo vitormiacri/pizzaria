@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { Home, Order, Checkout } from '@/presentation/pages';
+import { Home, Order, Checkout, Finished } from '@/presentation/pages';
 import { PizzaProvider } from '@/presentation/context/pizzas/pizzas-context';
 import { RemoteLoadPizzasData } from '@/data/usecases/load-pizzas-data/remote-load-pizzas-data';
 import { AxiosHttpClient } from '@/infra/http/axios-http-client/axios-http-client';
@@ -16,6 +16,7 @@ const Router: React.FC = () => {
           <Route path="/home" exact component={Home} />
           <Route path="/order" exact component={Order} />
           <Route path="/checkout" exact component={Checkout} />
+          <Route path="/finished" exact component={Finished} />
         </Switch>
       </BrowserRouter>
     </PizzaProvider>
