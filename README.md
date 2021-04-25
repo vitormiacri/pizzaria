@@ -49,6 +49,9 @@ npm run start
 yarn start
 ```
 
+- Acesse o seguinte endereço no seu navegador:
+- http://localhost:8080/home
+
 > ## Testes
 
 - Para rodar os testes, basta digitar:
