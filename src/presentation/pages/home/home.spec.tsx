@@ -37,7 +37,7 @@ describe('Home Component', () => {
     const button = sut.getByTestId('order-button');
     waitFor(() => fireEvent.click(button));
     expect(history.length).toBe(2);
-    expect(history.location.pathname).toBe('/order/step1');
+    expect(history.location.pathname).toBe('/order-step1');
   });
 
   test('Should go to Checkout page', () => {

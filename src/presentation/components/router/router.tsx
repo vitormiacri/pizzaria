@@ -14,7 +14,7 @@ const Router: React.FC = () => {
       <BrowserRouter>
         <Switch>
           <Route path="/home" exact component={Home} />
-          <Route path="/order/step1" exact component={Order} />
+          <Route path="/order-step1" exact component={Order} />
         </Switch>
       </BrowserRouter>
     </PizzaProvider>

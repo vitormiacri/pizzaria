@@ -9,7 +9,7 @@ const Home: React.FC = () => {
   const history = useHistory();
 
   const handleClickOrder = useCallback(() => {
-    history.push('/order/step1');
+    history.push('/order-step1');
   }, []);
 
   const handleClickOffer = useCallback(() => {
