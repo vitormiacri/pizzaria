@@ -30,6 +30,7 @@ const makeSut = (step = 1): SutTypes => {
         sabor: '',
         tamanho: '',
         oferta: '',
+        pontos: '0',
       },
       pizzaria: {
         ...db.pizzaria,

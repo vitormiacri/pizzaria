@@ -33,6 +33,6 @@ export type RemoteLoadPizzasDataModel = {
       massa: string;
       tamanho: string;
     };
-    pontos: number;
+    pontos: string;
   };
 };

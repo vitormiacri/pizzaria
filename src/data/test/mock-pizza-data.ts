@@ -11,6 +11,6 @@ export const mockRemotePizzaDataModel = (): RemoteLoadPizzasDataModel => ({
       massa: faker.random.word(),
       tamanho: faker.random.word(),
     },
-    pontos: faker.datatype.number(),
+    pontos: faker.random.word(),
   },
 });

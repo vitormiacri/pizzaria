@@ -34,6 +34,7 @@ export const PizzaProvider: React.FC<PizzaProvider> = ({
     sabor: '',
     tamanho: '',
     oferta: 'nao',
+    pontos: '0',
   });
 
   const setOffer = useCallback(

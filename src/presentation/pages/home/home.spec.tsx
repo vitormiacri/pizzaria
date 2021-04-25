@@ -17,6 +17,7 @@ const makeSut = () => {
         sabor: '',
         tamanho: '',
         oferta: '',
+        pontos: '0',
       },
       pizzaria: {
         ...db.pizzaria,

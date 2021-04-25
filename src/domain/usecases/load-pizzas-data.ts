@@ -12,7 +12,7 @@ export type LoadPizzaDataModel = {
       massa: string;
       tamanho: string;
     };
-    pontos: number;
+    pontos: string;
   };
 };
 
@@ -21,4 +21,5 @@ export type OrderModel = {
   sabor: string;
   tamanho: string;
   oferta: string;
+  pontos: string;
 };
