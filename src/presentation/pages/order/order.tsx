@@ -1,22 +1,14 @@
 import React, { useCallback, useContext, useEffect } from 'react';
-import { useHistory } from 'react-router';
 
-import { Header, Button, MainContainer } from '@/presentation/components';
+import { Header, MainContainer } from '@/presentation/components';
 import { PizzaContext } from '@/presentation/context/pizzas/pizzas-context';
 import Styles from './order-styles.scss';
+import Step1 from './components/step1/step1';
+import Step2 from './components/step2/step2';
+import Step3 from './components/step3/step3';
 
 const Order: React.FC = () => {
-  const history = useHistory();
-  const { pizzaria, getPizzaData, step, setStep } = useContext(PizzaContext);
-
-  const handleClick = useCallback(() => {
-    setStep(2);
-    history.push('/order/step2');
-  }, []);
-
-  const handleBack = useCallback(() => {
-    history.replace('/home');
-  }, []);
+  const { getPizzaData, step } = useContext(PizzaContext);
 
   useEffect(() => {
     getPizzaData();
@@ -27,25 +19,9 @@ const Order: React.FC = () => {
       <Header />
       <div className={Styles.card}>
         <p data-testid="passos">Passo {step} de 4</p>
-        <h2>Selecione a massa:</h2>
-        <div className={Styles.list}>
-          {pizzaria &&
-            pizzaria.massas.map((massa, index) => (
-              <button
-                type="button"
-                data-testid="massa"
-                key={index}
-                onClick={handleClick}
-              >
-                <p>{massa}</p>
-              </button>
-            ))}
-        </div>
-        <Button
-          text="Voltar"
-          data-testid="back-button"
-          handleClick={handleBack}
-        />
+        {step === 1 ? <Step1 /> : null}
+        {step === 2 ? <Step2 /> : null}
+        {step === 3 ? <Step3 /> : null}
       </div>
     </MainContainer>
   );

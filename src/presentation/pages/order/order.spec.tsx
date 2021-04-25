@@ -7,7 +7,7 @@ import db from '../../../../db.json';
 
 const history = createMemoryHistory({ initialEntries: ['/order'] });
 
-const makeSut = () => {
+const makeSut = (step = 1) => {
   const sut = renderWithHistory({
     Page: () => Order({ children: <Order /> }),
     history,
@@ -21,8 +21,8 @@ const makeSut = () => {
       pizzaria: {
         ...db.pizzaria,
       },
-      step: 1,
-      setStep: jest.fn(),
+      step,
+      setStep: (value) => value + 1,
       setOrderItem: (item: string, value: string) => jest.fn(),
     },
   });
@@ -30,12 +30,12 @@ const makeSut = () => {
 };
 describe('Order Page', () => {
   beforeEach(cleanup);
-  test('Should be render with correct initial values', () => {
+  test('Should be render with correct initial values', async () => {
     const sut = makeSut();
     const steps = sut.getByTestId('passos');
     const button = sut.getAllByTestId('massa');
-    waitFor(() => {
-      sut.getByTestId('massa');
+    await waitFor(() => {
+      sut.getAllByTestId('massa');
     });
     expect(steps.textContent).toEqual('Passo 1 de 4');
     expect(button[0].textContent).toEqual('Tradicional');
@@ -44,19 +44,27 @@ describe('Order Page', () => {
     expect(button[3].textContent).toEqual('Sem glúten');
   });
 
-  test('Should return to Home page if back button clicked', () => {
+  test('Should return to Home page if back button clicked', async () => {
     const sut = makeSut();
     const button = sut.getByTestId('back-button');
-    waitFor(() => fireEvent.click(button));
+    await waitFor(() => fireEvent.click(button));
     expect(history.length).toBe(1);
     expect(history.location.pathname).toBe('/home');
   });
 
-  test('Should go to Order page step 2 after button clicked', () => {
-    const sut = makeSut();
-    const button = sut.getAllByTestId('massa');
-    waitFor(() => fireEvent.click(button[0]));
-    expect(history.length).toBe(2);
-    expect(history.location.pathname).toBe('/order/step2');
+  test('Should be show all flavors if step is 2', async () => {
+    const sut = makeSut(2);
+    const buttonSabores = sut.getAllByTestId('sabor');
+    expect(buttonSabores[0].textContent).toEqual('Calabresa');
+    expect(buttonSabores[1].textContent).toEqual('Portuguesa');
+  });
+
+  test('Should be show all sizes if step is 3', async () => {
+    const sut = makeSut(3);
+    const buttonSabores = sut.getAllByTestId('tamanhos');
+    expect(buttonSabores[0].textContent).toEqual('Pequena');
+    expect(buttonSabores[1].textContent).toEqual('Média');
+    expect(buttonSabores[2].textContent).toEqual('Grande');
+    expect(buttonSabores[3].textContent).toEqual('Gigante');
   });
 });
