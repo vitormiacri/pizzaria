@@ -53,6 +53,8 @@ module.exports = {
     contentBase: './public',
     writeToDisk: true,
     historyApiFallback: true,
+    open: true,
+    openPage: 'home'
   },
   externals: {
     react: 'React',
