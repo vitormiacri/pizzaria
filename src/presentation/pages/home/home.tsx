@@ -24,7 +24,11 @@ const Home: React.FC = () => {
         <div className={Styles.offer}>
           <img src={Image} alt="Moda da Casa" />
           <div>
-            <p>A oferta do dia é a Moda da Casa!</p>
+            <p>
+              A oferta do dia é a Moda da Casa na massa crocante e tamanho
+              grande!
+            </p>
+
             <Button
               text="QUERO A OFERTA"
               data-testid="checkout-button"

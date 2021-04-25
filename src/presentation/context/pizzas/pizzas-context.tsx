@@ -7,10 +7,10 @@ import {
 
 type PizzaContextData = {
   pizzaria: LoadPizzaDataModel;
-  getPizzaData(): void;
   step: number;
+  order: OrderModel;
+  getPizzaData(): void;
   setStep(newStep: number): void;
-  getOrder(): OrderModel;
   setOrderItem(item: string, value: string): void;
 };
 
@@ -35,31 +35,30 @@ export const PizzaProvider: React.FC<PizzaProvider> = ({
     oferta: 'nao',
   });
 
-  const getOrder = useCallback(() => {
-    return order;
-  }, []);
-
-  const setNewOrderItem = useCallback((item: string, value: string) => {
-    setOrder({
-      ...order,
-      [item]: value,
-    });
-  }, []);
+  const setNewOrderItem = useCallback(
+    (item: string, value: string) => {
+      setOrder({
+        ...order,
+        [item]: value,
+      });
+    },
+    [order]
+  );
 
   const getPizzaData = useCallback(async () => {
     const response = await pizzaData.loadData();
     setPizza({
       ...response,
     });
-  }, []);
+  }, [pizza]);
 
   return (
     <PizzaContext.Provider
       value={{
         pizzaria: pizza,
         step,
+        order,
         setStep: (newStep) => setStep(newStep),
-        getOrder,
         setOrderItem: (item, value) => setNewOrderItem(item, value),
         getPizzaData,
       }}

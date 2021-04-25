@@ -16,8 +16,8 @@ type Params = {
   initialState: {
     pizzaria: LoadPizzaDataModel;
     step: number;
+    order: OrderModel;
     setStep(newStep: number): void;
-    getOrder(): OrderModel;
     setOrderItem(item: string, value: string): void;
   };
 };

@@ -12,12 +12,12 @@ const makeSut = () => {
     Page: () => Home({ children: <Home /> }),
     history,
     initialState: {
-      getOrder: () => ({
+      order: {
         massa: '',
         sabor: '',
         tamanho: '',
         oferta: '',
-      }),
+      },
       pizzaria: {
         ...db.pizzaria,
       },
