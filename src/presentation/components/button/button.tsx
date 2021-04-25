@@ -11,7 +11,6 @@ const Button: React.FC<Props> = ({ text, handleClick, ...rest }) => {
     <button
       className={Styles.button}
       type="button"
-      data-testid="order-init"
       onClick={handleClick}
       {...rest}
     >

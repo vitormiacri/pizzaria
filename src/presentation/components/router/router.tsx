@@ -1,14 +1,22 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Home from '@/presentation/pages/home/home';
+import { Home } from '@/presentation/pages';
+import { PizzaProvider } from '@/presentation/context/pizzas/pizzas-context';
+import { RemoteLoadPizzasData } from '@/data/usecases/load-pizzas-data/remote-load-pizzas-data';
+import { AxiosHttpClient } from '@/infra/http/axios-http-client/axios-http-client';
 
 const Router: React.FC = () => {
+  const url = 'http://localhost:3000/pizzaria';
+  const axiosHttpClient = new AxiosHttpClient();
+  const remoteLoadPizzaData = new RemoteLoadPizzasData(url, axiosHttpClient);
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/home" exact component={Home} />
-      </Switch>
-    </BrowserRouter>
+    <PizzaProvider pizzaData={remoteLoadPizzaData}>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/home" exact component={Home} />
+        </Switch>
+      </BrowserRouter>
+    </PizzaProvider>
   );
 };
 

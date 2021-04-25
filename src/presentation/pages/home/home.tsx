@@ -1,29 +1,53 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router';
 
-import { Header, Button, Card } from '@/presentation/components';
+import { PizzaContext } from '@/presentation/context/pizzas/pizzas-context';
+import { Header, Button } from '@/presentation/components';
+import Image from '../../../assets/pizza-oferta.png';
 import Styles from './home-styles.scss';
 
 const Home: React.FC = () => {
   const history = useHistory();
+  const context = useContext(PizzaContext);
 
-  const handleClick = useCallback(() => {
+  const handleClickOrder = useCallback(() => {
     history.push('/order');
   }, []);
+
+  const handleClickOffer = useCallback(() => {
+    history.push('/checkout');
+  }, []);
+
+  useEffect(() => context.getPizzaData(), []);
+
+  useEffect(() => {
+    console.log(context.pizzaria);
+  }, [context.pizzaria]);
 
   return (
     <div className={Styles.home}>
       <Header />
-      <Card>
-        <h2>🍕 Seja muito bem-vindo(a)! 🍕</h2>
-        <p>Aqui você encontrará diversas opções de pizzas</p>
-        <p>com os mais variados sabores, massas e tamanhos!</p>
-        <p>
-          Faça seu pedido clicando no botão abaixo e receba sua pizza no
-          conforto da sua casa! 😃
-        </p>
-        <Button text="FAZER PEDIDO" handleClick={handleClick} />
-      </Card>
+      <div className={Styles.card}>
+        <h2>Seja muito bem-vindo(a)!</h2>
+        <div className={Styles.offer}>
+          <img src={Image} alt="Moda da Casa" />
+          <div>
+            <p>A oferta do dia é a Moda da Casa!</p>
+            <Button
+              text="QUERO A OFERTA"
+              handleClick={handleClickOffer}
+            ></Button>
+          </div>
+        </div>
+        <div className={Styles.custom}>
+          <p>Ou se preferir </p>
+          <Button
+            text="MONTE A SUA"
+            data-testid="order-init"
+            handleClick={handleClickOrder}
+          ></Button>
+        </div>
+      </div>
     </div>
   );
 };
