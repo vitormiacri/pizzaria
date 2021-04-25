@@ -15,3 +15,10 @@ export type LoadPizzaDataModel = {
     pontos: number;
   };
 };
+
+export type OrderModel = {
+  massa: string;
+  sabor: string;
+  tamanho: string;
+  oferta: string;
+};

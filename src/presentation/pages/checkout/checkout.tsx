@@ -1,11 +1,11 @@
-import React, { useCallback, useContext, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { useHistory } from 'react-router';
 
-import { Header, Button, MainContainer } from '@/presentation/components';
+import { Header, Button } from '@/presentation/components';
 import Image from '../../../assets/pizza-oferta.png';
 import Styles from './home-styles.scss';
 
-const Home: React.FC = () => {
+const Checkout: React.FC = () => {
   const history = useHistory();
 
   const handleClickOrder = useCallback(() => {
@@ -17,7 +17,7 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <MainContainer>
+    <div className={Styles.home}>
       <Header />
       <div className={Styles.card}>
         <h2>Seja muito bem-vindo(a)!</h2>
@@ -27,22 +27,13 @@ const Home: React.FC = () => {
             <p>A oferta do dia é a Moda da Casa!</p>
             <Button
               text="QUERO A OFERTA"
-              data-testid="checkout-button"
-              handleClick={handleClickOffer}
+              handleClick={() => console.log()}
             ></Button>
           </div>
         </div>
-        <div className={Styles.custom}>
-          <p>Ou se preferir </p>
-          <Button
-            text="MONTE A SUA"
-            data-testid="order-button"
-            handleClick={handleClickOrder}
-          ></Button>
-        </div>
       </div>
-    </MainContainer>
+    </div>
   );
 };
 
-export default Home;
+export default Checkout;
