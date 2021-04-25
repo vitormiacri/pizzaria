@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { useHistory } from 'react-router';
 
 import { Header, Button, MainContainer } from '@/presentation/components';

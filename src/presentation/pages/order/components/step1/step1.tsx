@@ -7,9 +7,7 @@ import { Button } from '@/presentation/components';
 
 const Step1: React.FC = () => {
   const history = useHistory();
-  const { pizzaria, getPizzaData, setStep, setOrderItem } = useContext(
-    PizzaContext
-  );
+  const { pizzaria, setStep, setOrderItem } = useContext(PizzaContext);
 
   const handleBack = useCallback(() => {
     history.replace('/home');

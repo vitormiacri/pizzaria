@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import { Header, MainContainer } from '@/presentation/components';
 import { PizzaContext } from '@/presentation/context/pizzas/pizzas-context';
