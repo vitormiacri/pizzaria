@@ -7,7 +7,7 @@ import Image from '../../../assets/pizza-oferta.png';
 import Styles from './checkout-styles.scss';
 
 const Checkout: React.FC = () => {
-  const { order } = useContext(PizzaContext);
+  const { order, setStep } = useContext(PizzaContext);
   const history = useHistory();
 
   const handleClickBack = useCallback(() => {
@@ -15,6 +15,7 @@ const Checkout: React.FC = () => {
   }, []);
 
   const handleClickConfirm = useCallback(() => {
+    setStep(1);
     history.push('/finished');
   }, []);
 

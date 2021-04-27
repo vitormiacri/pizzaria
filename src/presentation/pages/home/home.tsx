@@ -11,6 +11,12 @@ const Home: React.FC = () => {
   const { setOffer, pizzaria, getPizzaData } = useContext(PizzaContext);
 
   const handleClickOrder = useCallback(() => {
+    const { ofertaDia } = pizzaria;
+    setOffer({
+      ...ofertaDia.pizza,
+      oferta: 'nao',
+      pontos: '0',
+    });
     history.push('/order');
   }, []);
 
