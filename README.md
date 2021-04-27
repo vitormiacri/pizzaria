@@ -41,7 +41,7 @@ npm run server
 yarn server
 ```
 
-- Depois execute o comando para iniciar o projeto:
+- Depois **abra uma nova janela do terminal** e execute o comando para iniciar o projeto:
 
 ```js
 npm run start
