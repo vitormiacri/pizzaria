@@ -18,7 +18,7 @@ const Home: React.FC = () => {
       pontos: '0',
     });
     history.push('/order');
-  }, []);
+  }, [pizzaria]);
 
   const handleClickOffer = useCallback(() => {
     const { ofertaDia } = pizzaria;
